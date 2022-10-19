@@ -13,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 @Service
 @RequiredArgsConstructor
@@ -40,7 +40,7 @@ public class WeatherForecastServiceImpl implements WeatherForecastService {
         List<WeatherForecast> weatherForecasts = this.weatherForecastRepository
                 .findBySensorIdAndMetricInAndCreatedDateBetween(sensor, metric, startDate, endDate);
 
-        Map<Metric, List<WeatherForecast>> groupedMetrics = weatherForecasts.stream().collect(Collectors.groupingBy(WeatherForecast::getMetric));
+        Map<Metric, List<WeatherForecast>> groupedMetrics = weatherForecasts.stream().collect(groupingBy(WeatherForecast::getMetric));
 
         CalculationStrategy calculationStrategy = this.calculationStrategyFactory.findStrategyByStatistic(statistic);
         return calculationStrategy.calculate(groupedMetrics);
