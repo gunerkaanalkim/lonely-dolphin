@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class SensorRequest {
     private Long sensorId;
     private Metric metric;
-    private Integer value;
+    private Double value;
 }

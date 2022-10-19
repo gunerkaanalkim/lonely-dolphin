@@ -17,7 +17,7 @@ public class CalculationStrategyFactory {
         this.createStrategy(calculationStrategySet);
     }
 
-    public CalculationStrategy findStrategy(Statistic statistic) {
+    public CalculationStrategy findStrategyByStatistic(Statistic statistic) {
         return strategies.get(statistic);
     }
 

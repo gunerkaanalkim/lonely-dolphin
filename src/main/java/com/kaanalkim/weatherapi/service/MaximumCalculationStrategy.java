@@ -2,25 +2,24 @@ package com.kaanalkim.weatherapi.service;
 
 import com.kaanalkim.weatherapi.model.Metric;
 import com.kaanalkim.weatherapi.model.Statistic;
+import com.kaanalkim.weatherapi.model.WeatherForecast;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.IntSummaryStatistics;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class MaximumCalculationStrategy implements CalculationStrategy {
     @Override
-    public Map<Metric, Map<String, Integer>> calculate(Map<Metric, IntSummaryStatistics> statistics) {
-        Map<Metric, Map<String, Integer>> preparedStatistic = new HashMap<>();
-
-        statistics.forEach((metric, statistic) -> {
-            preparedStatistic.put(metric, new HashMap<>() {{
-                put(Statistic.MAX.name(), statistic.getMax());
-            }});
-        });
-
-        return preparedStatistic;
+    public Map<Metric, Double> calculate(Map<Metric, List<WeatherForecast>> groupedMetrics) {
+        return groupedMetrics.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        metricListEntry -> metricListEntry.getValue().stream()
+                                .mapToDouble(WeatherForecast::getValue).max().orElseThrow(IllegalStateException::new))
+                );
     }
 
     @Override

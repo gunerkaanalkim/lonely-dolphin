@@ -12,5 +12,5 @@ import java.util.Map;
 public interface WeatherForecastService {
     WeatherForecast create(SensorRequest sensorRequest);
 
-    Map<Metric, Map<String, Integer>> search(Long sensor, List<Metric> metric, Statistic statistic, Date startDate, Date endDate);
+    Map<Metric, Double> search(Long sensor, List<Metric> metric, Statistic statistic, Date startDate, Date endDate);
 }

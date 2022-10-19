@@ -25,5 +25,5 @@ public class WeatherForecast extends AbstractEntity {
     private Metric metric;
 
     @Column(name = "value")
-    private Integer value;
+    private Double value;
 }
