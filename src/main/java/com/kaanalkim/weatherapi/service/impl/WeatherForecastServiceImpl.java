@@ -12,6 +12,7 @@ import com.kaanalkim.weatherapi.service.WeatherForecastService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class WeatherForecastServiceImpl implements WeatherForecastService {
     }
 
     @Override
-    public Map<Metric, Double> search(Long sensor, List<Metric> metric, Statistic statistic, Date startDate, Date endDate) {
+    public Map<Metric, Double> search(Long sensor, List<Metric> metric, Statistic statistic, LocalDateTime startDate, LocalDateTime endDate) {
         List<WeatherForecast> weatherForecasts = this.weatherForecastRepository
                 .findBySensorIdAndMetricInAndCreatedDateBetween(sensor, metric, startDate, endDate);
 

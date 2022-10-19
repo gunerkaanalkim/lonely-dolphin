@@ -11,7 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @MappedSuperclass
@@ -30,7 +30,7 @@ public abstract class AbstractEntity {
 
     @CreatedDate
     @Column(name = "created_date")
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
     @LastModifiedBy
     @Column(name = "last_modified_by")
@@ -38,5 +38,5 @@ public abstract class AbstractEntity {
 
     @LastModifiedDate
     @Column(name = "last_modified_date")
-    private Date lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 }
