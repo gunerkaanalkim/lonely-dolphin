@@ -6,7 +6,6 @@ import com.kaanalkim.weatherapi.model.WeatherForecast;
 import com.kaanalkim.weatherapi.payload.SensorRequest;
 
 import java.util.Date;
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 

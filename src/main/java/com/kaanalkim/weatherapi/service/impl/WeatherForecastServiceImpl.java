@@ -1,11 +1,11 @@
 package com.kaanalkim.weatherapi.service.impl;
 
 
-import com.kaanalkim.weatherapi.model.Metric;
-import com.kaanalkim.weatherapi.model.Statistic;
-import com.kaanalkim.weatherapi.model.WeatherForecast;
+import com.kaanalkim.weatherapi.model.*;
 import com.kaanalkim.weatherapi.payload.SensorRequest;
 import com.kaanalkim.weatherapi.repository.WeatherForecastRepository;
+import com.kaanalkim.weatherapi.service.CalculationStrategy;
+import com.kaanalkim.weatherapi.service.CalculationStrategyFactory;
 import com.kaanalkim.weatherapi.service.WeatherForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +16,12 @@ import java.util.stream.Collectors;
 @Service
 public class WeatherForecastServiceImpl implements WeatherForecastService {
     private final WeatherForecastRepository weatherForecastRepository;
+    private final CalculationStrategyFactory calculationStrategyFactory;
 
     @Autowired
-    public WeatherForecastServiceImpl(WeatherForecastRepository weatherForecastRepository) {
+    public WeatherForecastServiceImpl(WeatherForecastRepository weatherForecastRepository, CalculationStrategyFactory calculationStrategyFactory) {
         this.weatherForecastRepository = weatherForecastRepository;
+        this.calculationStrategyFactory = calculationStrategyFactory;
     }
 
     @Override
@@ -42,44 +44,21 @@ public class WeatherForecastServiceImpl implements WeatherForecastService {
 
         Map<Metric, IntSummaryStatistics> statistics = getAllStatistics(groupedMetrics);
 
-        Map<Metric, Map<String, Integer>> specificStatistic = getSpecificStatistic(statistic, statistics);
-
-        return specificStatistic;
+        return getSpecificStatistic(statistic, statistics);
     }
 
     private static Map<Metric, IntSummaryStatistics> getAllStatistics(Map<Metric, List<WeatherForecast>> metricListMap) {
-        Map<Metric, IntSummaryStatistics> statistics = metricListMap.entrySet()
+        return metricListMap.entrySet()
                 .stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         metricListEntry -> metricListEntry.getValue().stream()
                                 .mapToInt(WeatherForecast::getValue).summaryStatistics())
                 );
-        return statistics;
     }
 
-    private static Map<Metric, Map<String, Integer>> getSpecificStatistic(Statistic statistic, Map<Metric, IntSummaryStatistics> statistics) {
-        Map<Metric, Map<String, Integer>> preparedStatistic = new HashMap<>();
-
-        statistics.forEach((metric1, statistics1) -> {
-            if (Statistic.AVERAGE.name().equals(statistic.name())) {
-                preparedStatistic.put(metric1, new HashMap<>() {{
-                    put(statistic.name(), (int) statistics1.getAverage());
-                }});
-            } else if (Statistic.MIN.name().equals(statistic.name())) {
-                preparedStatistic.put(metric1, new HashMap<>() {{
-                    put(statistic.name(), statistics1.getMin());
-                }});
-            } else if (Statistic.MAX.name().equals(statistic.name())) {
-                preparedStatistic.put(metric1, new HashMap<>() {{
-                    put(statistic.name(), statistics1.getMax());
-                }});
-            } else {
-                preparedStatistic.put(metric1, new HashMap<>() {{
-                    put(statistic.name(), (int) statistics1.getAverage());
-                }});
-            }
-        });
-        return preparedStatistic;
+    private Map<Metric, Map<String, Integer>> getSpecificStatistic(Statistic statistic, Map<Metric, IntSummaryStatistics> statistics) {
+        CalculationStrategy calculationStrategy = this.calculationStrategyFactory.findStrategy(statistic);
+        return calculationStrategy.calculate(statistics);
     }
 }
