@@ -12,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("weather-forecast")
@@ -33,15 +35,15 @@ public class WeatherForecastController {
 
     //TODO Configure datetime format in .yml file or in application level
     @GetMapping
-    public ResponseEntity<List<WeatherForecast>> read(
+    public ResponseEntity< Map<Metric, Map<String, Integer>>> read(
             @RequestParam Long sensor,
             @RequestParam List<Metric> metrics,
             @RequestParam Statistic statistic,
             @RequestParam("from")  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")  Date startDate,
             @RequestParam("to")  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")  Date endDate) {
-        List<WeatherForecast> search = this.weatherForecastService.search(sensor, metrics, statistic, startDate, endDate);
+        Map<Metric, Map<String, Integer>> statistics = this.weatherForecastService.search(sensor, metrics, statistic, startDate, endDate);
 
-        return ResponseEntity.ok().body(search);
+        return ResponseEntity.ok().body(statistics);
     }
 
 }
