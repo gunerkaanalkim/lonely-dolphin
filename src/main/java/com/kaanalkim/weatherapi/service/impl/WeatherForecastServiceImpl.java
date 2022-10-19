@@ -9,7 +9,7 @@ import com.kaanalkim.weatherapi.repository.WeatherForecastRepository;
 import com.kaanalkim.weatherapi.service.CalculationStrategy;
 import com.kaanalkim.weatherapi.service.CalculationStrategyFactory;
 import com.kaanalkim.weatherapi.service.WeatherForecastService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,15 +18,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class WeatherForecastServiceImpl implements WeatherForecastService {
     private final WeatherForecastRepository weatherForecastRepository;
     private final CalculationStrategyFactory calculationStrategyFactory;
-
-    @Autowired
-    public WeatherForecastServiceImpl(WeatherForecastRepository weatherForecastRepository, CalculationStrategyFactory calculationStrategyFactory) {
-        this.weatherForecastRepository = weatherForecastRepository;
-        this.calculationStrategyFactory = calculationStrategyFactory;
-    }
 
     @Override
     public WeatherForecast create(SensorRequest sensorRequest) {
