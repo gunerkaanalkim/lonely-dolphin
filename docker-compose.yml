@@ -2,7 +2,6 @@ version: '3.6'
 services:
   weather-api-db:
     image: mysql:5.7
-    container_name: weather-api-db
     restart: always
     environment:
       MYSQL_DATABASE: 'weather'
