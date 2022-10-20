@@ -6,17 +6,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SensorRequest {
-    @NotNull
+public class SensorResponse {
     private Long sensorId;
-    @NotNull
     private Metric metric;
-    @NotNull
     private Double value;
 }
