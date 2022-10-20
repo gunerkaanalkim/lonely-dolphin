@@ -4,8 +4,8 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'weather'
-      MYSQL_USER: 'lonely-dolphin'
+      MYSQL_DATABASE: '${DB_NAME}'
+      MYSQL_USER: '${DB_USER}'
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
     ports:
@@ -20,8 +20,8 @@ services:
     container_name: weather-api-server
     build: .
     environment:
-      - "PROFILE=dev"
-      - "DB_USERNAME=lonely-dolphin"
+      - "PROFILE=${PROFILE}"
+      - "DB_USERNAME=${DB_USER}"
       - "DB_PASSWORD=${DB_PASSWORD}"
       - "DB_HOST=jdbc:mysql://weather-api-db:3306/weather?autoReconnect=true&useSSL=false"
     ports:
