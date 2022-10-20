@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "weatherforecast")
 @SuperBuilder
-public class WeatherForecast extends AbstractEntity {
+public class WeatherForecastEntity extends AbstractEntity {
 
     @Column(name = "sensorId")
     private Long sensorId;
@@ -24,6 +24,6 @@ public class WeatherForecast extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Metric metric;
 
-    @Column(name = "value")
+    @Column(name = "metricValue")
     private Double value;
 }
