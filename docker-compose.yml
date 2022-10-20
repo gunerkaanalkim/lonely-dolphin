@@ -1,0 +1,37 @@
+version: '3.6'
+services:
+  weather-api-db:
+    image: mysql:5.7
+    container_name: weather-api-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'weather'
+      MYSQL_USER: 'lonely-dolphin'
+      MYSQL_PASSWORD: 'c7vuL7XNbC15EsTgdpc1'
+      MYSQL_ROOT_PASSWORD: 'c7vuL7XNbC15EsTgdpc1'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db-volume:/var/lib/mysql
+    networks:
+      - weather-api
+  weather-api-server:
+    container_name: weather-api-server
+    build: .
+    environment:
+      - "PROFILE=dev"
+      - "DB_USERNAME=lonely-dolphin"
+      - "DB_PASSWORD=c7vuL7XNbC15EsTgdpc1"
+      - "DB_HOST=jdbc:mysql://weather-api-db:3306/weather?autoReconnect=true&useSSL=false"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - weather-api-db
+    networks:
+      - weather-api
+volumes:
+  db-volume:
+networks:
+  weather-api:
