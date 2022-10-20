@@ -16,20 +16,20 @@ services:
       - db-volume:/var/lib/mysql
     networks:
       - weather-api
-#  weather-api-server:
-#    container_name: weather-api-server
-#    build: .
-#    environment:
-#      - "PROFILE=dev"
-#      - "DB_USERNAME=lonely-dolphin"
-#      - "DB_PASSWORD=${DB_PASSWORD}"
-#      - "DB_HOST=jdbc:mysql://weather-api-db:3306/weather?autoReconnect=true&useSSL=false"
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - weather-api-db
-#    networks:
-#      - weather-api
+  weather-api-server:
+    container_name: weather-api-server
+    build: .
+    environment:
+      - "PROFILE=dev"
+      - "DB_USERNAME=lonely-dolphin"
+      - "DB_PASSWORD=${DB_PASSWORD}"
+      - "DB_HOST=jdbc:mysql://weather-api-db:3306/weather?autoReconnect=true&useSSL=false"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - weather-api-db
+    networks:
+      - weather-api
 volumes:
   db-volume:
 networks:
