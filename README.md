@@ -82,7 +82,7 @@ The application is fully dockerized. Therefore, you can run the following comman
    https://github.com/gunerkaanalkim/lonely-dolphin.git
    ```
    
-2. Edit .env file
+2. Change to the project directory and edit .env file
 3. Run docker-compose to specify the env file according to your operating system
    ```sh
    docker-compose --env-file .\.env.dev up
