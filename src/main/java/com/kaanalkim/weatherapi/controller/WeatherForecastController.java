@@ -36,8 +36,8 @@ public class WeatherForecastController {
             @RequestParam Long sensor,
             @RequestParam List<Metric> metrics,
             @RequestParam Statistic statistic,
-            @RequestParam("from") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate,
-            @RequestParam("to") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate) {
+            @RequestParam(required = false, name = "from") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate,
+            @RequestParam(required = false, name = "to") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate) {
         Map<Metric, Double> statistics = this.weatherForecastService.search(sensor, metrics, statistic, startDate, endDate);
         return ResponseEntity.ok(statistics);
     }
