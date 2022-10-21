@@ -92,9 +92,6 @@ The application is fully dockerized. Therefore, you can run the following comman
    http://localhost:8080/swagger-ui/index.html
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 
@@ -137,9 +134,6 @@ Guner Kaan Alkim - [@github](https://github.com/gunerkaanalkim)
 
 Project Link: [Weather Api](https://github.com/gunerkaanalkim/lonely-dolphin)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -156,8 +150,6 @@ to kick things off!
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
