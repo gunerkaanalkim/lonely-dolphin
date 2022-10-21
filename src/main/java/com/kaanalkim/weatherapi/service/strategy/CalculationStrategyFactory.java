@@ -1,4 +1,4 @@
-package com.kaanalkim.weatherapi.service.calculate;
+package com.kaanalkim.weatherapi.service.strategy;
 
 import com.kaanalkim.weatherapi.model.Statistic;
 import lombok.RequiredArgsConstructor;

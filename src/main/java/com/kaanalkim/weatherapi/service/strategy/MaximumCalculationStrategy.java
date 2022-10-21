@@ -1,4 +1,4 @@
-package com.kaanalkim.weatherapi.service.calculate;
+package com.kaanalkim.weatherapi.service.strategy;
 
 import com.kaanalkim.weatherapi.model.Metric;
 import com.kaanalkim.weatherapi.model.Statistic;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class SummationCalculationStrategy implements CalculationStrategy {
+public class MaximumCalculationStrategy implements CalculationStrategy {
     @Override
     public Map<Metric, Double> calculate(Map<Metric, List<WeatherForecastEntity>> groupedMetrics) {
         return groupedMetrics.entrySet()
@@ -18,12 +18,12 @@ public class SummationCalculationStrategy implements CalculationStrategy {
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         metricListEntry -> metricListEntry.getValue().stream()
-                                .mapToDouble(WeatherForecastEntity::getValue).sum())
+                                .mapToDouble(WeatherForecastEntity::getValue).max().orElseThrow(IllegalStateException::new))
                 );
     }
 
     @Override
     public Statistic getStatistic() {
-        return Statistic.SUM;
+        return Statistic.MAX;
     }
 }

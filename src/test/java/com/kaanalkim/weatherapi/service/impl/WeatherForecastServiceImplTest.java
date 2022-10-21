@@ -1,7 +1,6 @@
 package com.kaanalkim.weatherapi.service.impl;
 
 import com.kaanalkim.weatherapi.WeatherApiApplicationTests;
-import com.kaanalkim.weatherapi.exception.InvalidDateException;
 import com.kaanalkim.weatherapi.model.Metric;
 import com.kaanalkim.weatherapi.model.Statistic;
 import com.kaanalkim.weatherapi.model.WeatherForecastEntity;
@@ -9,9 +8,9 @@ import com.kaanalkim.weatherapi.payload.SensorRequest;
 import com.kaanalkim.weatherapi.payload.SensorResponse;
 import com.kaanalkim.weatherapi.repository.WeatherForecastRepository;
 import com.kaanalkim.weatherapi.service.WeatherForecastService;
-import com.kaanalkim.weatherapi.service.calculate.CalculationStrategy;
-import com.kaanalkim.weatherapi.service.calculate.CalculationStrategyFactory;
-import com.kaanalkim.weatherapi.service.calculate.MaximumCalculationStrategy;
+import com.kaanalkim.weatherapi.service.strategy.CalculationStrategy;
+import com.kaanalkim.weatherapi.service.strategy.CalculationStrategyFactory;
+import com.kaanalkim.weatherapi.service.strategy.MaximumCalculationStrategy;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
