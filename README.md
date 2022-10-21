@@ -1,10 +1,6 @@
 [![CircleCI][circleciBadge]][circleciUrl]
 [![codecov][codecovBadge]][codecovUrl]
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <br />
 <div align="center">
 <h3 align="center">Weather API</h3>
@@ -150,7 +146,8 @@ Your date format should be yyyy-MM-dd'T'HH-mm-ss
 
 ## Contact
 
-Guner Kaan Alkim - [@github](https://github.com/gunerkaanalkim)
+Guner Kaan Alkim - [@github](https://github.com/gunerkaanalkim) [@linkedin](https://www.linkedin.com/in/kaanalkim/)
+
 
 Project Link: [Weather Api](https://github.com/gunerkaanalkim/lonely-dolphin)
 
