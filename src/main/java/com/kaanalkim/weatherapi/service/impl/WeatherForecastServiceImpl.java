@@ -49,6 +49,11 @@ public class WeatherForecastServiceImpl implements WeatherForecastService {
 
     @Override
     public Map<Metric, Double> search(Long sensor, List<Metric> metrics, Statistic statistic, LocalDateTime startDate, LocalDateTime endDate) {
+        if (startDate == null || endDate == null) {
+            endDate = LocalDateTime.now();
+            startDate = endDate.minusDays(1);
+        }
+
         long dayDifferences = ChronoUnit.DAYS.between(startDate, endDate);
         long monthDifferences = ChronoUnit.MONTHS.between(startDate, endDate);
 
