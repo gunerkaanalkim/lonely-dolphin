@@ -46,7 +46,7 @@
 
 ## About The Project
 
-The Weather API that developed with Spring Boot.
+Simple Restful APIs providing calculation for weather forecast data
 
 ### Built With
 
