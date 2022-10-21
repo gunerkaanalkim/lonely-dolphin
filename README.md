@@ -54,29 +54,22 @@ The Weather API that developed with Spring Boot.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for
-the acknowledgements section. Here are a few examples.
-
-* [![Java][java]]
-* [![Spring Boot][springboot]]
-* [![MySQL][mysql]]
+* ![Java][java]
+* ![Spring Boot][springboot]
+* ![MySQL][mysql]
 * Docker
 * Swagger
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This application is developed using Spring Boot, MySQL, Docker and Swagger.
 
 ### Prerequisites
+Make sure you have the following before running
 
-This is an example of how to list things you need to use the software and how to install them.
 * Java 11 (openjdk 11.0.16.1 2022-08-12)
 * Docker (20.10.17, build 100c701)
 
