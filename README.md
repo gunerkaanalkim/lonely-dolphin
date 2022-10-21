@@ -116,6 +116,8 @@ To create a weather forecast data with a sensor request, send the sample request
 ### Search
 To get statictic information according to your metric, send the sample request body to the URL
 
+Your date format should be yyyy-MM-dd'T'HH-mm-ss
+
 #### Request URL
 ```
 [POST] /weather-forecast?sensor=1&metrics=HUMIDITY&metrics=TEMPERATURE&statistic=MIN&from=2022-10-21T23%3A19%3A31&to=2022-10-22T23%3A20%3A11
