@@ -36,7 +36,7 @@
       </ul>
     </li>
     <li>
-      <a href="#at-a-glance">Codebase at a glance</a>
+      <a href="#codebase-at-a-glance">Codebase at a glance</a>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
