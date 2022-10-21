@@ -50,13 +50,11 @@ The Weather API that developed with Spring Boot.
 
 ### Built With
 
-* ![Java][java]
-* ![Spring Boot][springboot]
-* ![MySQL][mysql]
+* Java
+* Spring Boot
+* MySQL
 * Docker
 * Swagger
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
