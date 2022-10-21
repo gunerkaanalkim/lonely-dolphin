@@ -56,7 +56,6 @@ The Weather API that developed with Spring Boot.
 * Docker
 * Swagger
 
-<!-- GETTING STARTED -->
 
 ## Getting Started
 This application is developed using Spring Boot, MySQL, Docker and Swagger.
@@ -86,6 +85,10 @@ The application is fully dockerized. Therefore, you can run the following comman
    http://localhost:8080/swagger-ui/index.html
    ```
 
+If you want to run the application in your local development environment, please make sure to specify the environment variables.
+```
+DB_HOST=jdbc:mysql://localhost:3306/weather;DB_PASSWORD=shouldBeChanged;DB_USERNAME=lonely-dolphin;PROFILE=dev
+```
 
 <!-- USAGE EXAMPLES -->
 
